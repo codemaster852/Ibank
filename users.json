@@ -1,0 +1,13 @@
+{
+    "mostafa": {
+      "name": "Mostafa Hesham ALatawy",
+      "email": "mostafa@example.com",
+      "balance": "1000",
+      "phone": "123-456-7890",
+      "birthDate": "1990-01-01",
+      "country": "Egypt",
+      "city": "Cairo",
+      "account": "ACC123456"
+    }
+  }
+  

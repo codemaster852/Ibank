@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Mostafa's Dashboard</title>
+</head>
+<body>
+  <div class="dashboard">
+    <header class="dashboard-header">
+      <h1>Welcome, <span id="username-display">Mostafa</span></h1>
+      <div class="settings-icon" onclick="toggleSettings()">
+        ⚙️
+      </div>
+    </header>
+    <main class="dashboard-main">
+      <section id="details">
+        <h2>Your Details</h2>
+        <div>
+          <p><strong>Name:</strong> <span id="name-display"></span></p>
+          <p><strong>Email:</strong> <span id="email-display"></span></p>
+          <p><strong>Balance:</strong> $<span id="balance-display"></span></p>
+          <p><strong>Phone_number:</strong> <span id="phone_number-display"></span></p>
+          <p><strong>Birthdate:</strong> <span id="birthdate-display"></span></p>
+          <p><strong>Country:</strong> <span id="country-display"></span></p>
+          <p><strong>City:</strong> <span id="city-display"></span></p>
+        </div>
+      </section>
+      <section id="edit-section" class="hidden">
+        <h2>Edit Your Details</h2>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name">
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email">
+        </div>
+        <div>
+          <label for="balance">Balance:</label>
+          <input type="number" id="balance">
+        </div>
+        <div>
+            <label for="phone_number">Phone Number:</label>
+            <input type="number" id="phone_number">
+          </div>
+        <div>
+            <label for="">Birthdate:</label>
+            <input type="date" id="birthdate">
+          </div>
+          <div>
+            <label for="phone_number">Country:</label>
+            <input type="text" id="country">
+          </div>
+          <div>
+            <label for="phone_number">City:</label>
+            <input type="text" id="city">
+          </div>
+        <button onclick="saveChanges()">Save Changes</button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Load user data from localStorage or set default values
+    function loadUserData() {
+      const name = localStorage.getItem('name') || 'Mostafa';
+      const email = localStorage.getItem('email') || 'mostafa@example.com';
+      const balance = localStorage.getItem('balance') || '1000';
+      const phone_number = localStorage.getItem('phone_number') || '01148414265';
+      const birthdate = localStorage.getItem('birthdate') || '14/9/2024';
+      const country = localStorage.getItem('country') || 'Egypt';
+      const city = localStorage.getItem('city') || 'Damanhour';
+      // Update displayed data
+      document.getElementById('name-display').textContent = name;
+      document.getElementById('email-display').textContent = email;
+      document.getElementById('balance-display').textContent = balance;
+      document.getElementById('phone_number-display').textContent = phone_number;
+      document.getElementById('birthdate-display').textContent = birthdate;
+      document.getElementById('country-display').textContent = country;
+      document.getElementById('city-display').textContent = city;
+
+      // Set inputs to current values
+      document.getElementById('name').value = name;
+      document.getElementById('email').value = email;
+      document.getElementById('balance').value = balance;
+      document.getElementById('phone_number').value = phone_number;
+      document.getElementById('birthdate-display').textContent = birthdate;
+      document.getElementById('country-display').textContent = country;
+      document.getElementById('city-display').textContent = city;
+    }
+
+    // Save changes to localStorage
+    function saveChanges() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const balance = document.getElementById('balance').value;
+      const phone_number = document.getElementById('phone_number').value;
+      const birthdate = document.getElementById('birthdate').value;
+      const country = document.getElementById('country').value;
+      const city = document.getElementById('city').value;
+      // Save to localStorage
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+      localStorage.setItem('balance', balance);
+      localStorage.setItem('phone_number', phone_number);
+      localStorage.setItem('birthdate', birthdate);
+      localStorage.setItem('country', country);
+      localStorage.setItem('city', city);
+
+
+      // Update displayed data
+      loadUserData();
+
+      alert('Changes saved!');
+      toggleSettings();
+    }
+
+    // Toggle the settings section visibility
+    function toggleSettings() {
+      const editSection = document.getElementById('edit-section');
+      editSection.classList.toggle('hidden');
+    }
+
+    // Load data on page load
+    window.onload = loadUserData;
+  </script>
+</body>
+</html>
